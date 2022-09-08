@@ -1,23 +1,20 @@
 package OrdenarLista;
-
 import java.util.*;
 
 public class OrdenarLista {
 
     public static void main(String[] args) {
-
-        int [] valores = new int[5]{};
-        
-        ArrayList<Integer> ListaOrdenada = new ArrayList<>();
-
-        for (var element: args ) {
+        int [] listaDeNumeros = new int[args.length];
+        for (int i = 0; i<= args.length; i++){
             try {
-                ListaOrdenada.add( Integer.parseInt(element));
+             listaDeNumeros[i] = Integer.parseInt(args[i]);
             }catch (Exception e){
-
+                System.out.println(e);
             }
         }
-
-        Collections.sort(ListaOrdenada);
+        Arrays.sort(listaDeNumeros);
+        for (int elementSorted: listaDeNumeros) {
+            System.out.println(elementSorted);
+        }
     }
 }
