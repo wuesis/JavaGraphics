@@ -1,13 +1,13 @@
-package Figuras;
+package GrosorLineaCircunferencia;
 
 import javax.swing.*;
 import java.lang.reflect.InvocationTargetException;
 
-public class Figuras {
+public class GrosorLineaCircunferencia {
 
     public static void main(String[] args) {
 
-        Runnable initialFrom = new Runnable() {
+        Runnable initialFrame = new Runnable() {
             @Override
             public void run() {
                 new GUI(args);
@@ -15,11 +15,12 @@ public class Figuras {
         };
 
         try {
-            SwingUtilities.invokeAndWait(initialFrom);
+            SwingUtilities.invokeAndWait(initialFrame);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         } catch (InvocationTargetException e) {
             throw new RuntimeException(e);
         }
+
     }
 }
