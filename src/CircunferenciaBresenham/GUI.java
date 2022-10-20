@@ -9,21 +9,19 @@ public class GUI extends JFrame {
 
     private BufferedImage buffer;
     private Graphics graPixel;
-    int tx, ty, radius, d;
+    int x, y, radius, d, tx, ty;
 
     public GUI(String[] args) {
-        super("Simetria");
-        tx = Integer.parseInt(args[0]);
-        ty = Integer.parseInt(args[1]);
+        super("CircunferenciaBresenham");
+        x = Integer.parseInt(args[0]);
+        y = Integer.parseInt(args[1]);
         radius = Integer.parseInt(args[2]);
-        setSize(500, 500);
+        setSize(800, 600);
         setVisible(true);
         buffer = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
         graPixel = (Graphics2D) buffer.createGraphics();
-        putPixel(tx, ty, Color.green);
-        y = radius;
-        x = 0;
-        pk = 1 - radius;
+        tx = 0;
+        ty = radius;
     }
 
     @Override
@@ -32,15 +30,16 @@ public class GUI extends JFrame {
     }
 
     private void drawCircle() {
-        while (tx <= ty) {
-            putPixel(x + tx, y + ty, color);
-            putPixel(x + tx, y - ty, color);
-            putPixel(x - tx, y + ty, color);
-            putPixel(x - tx, y - ty, color);
-            putPixel(x + ty, y + tx, color);
-            putPixel(x + ty, y - tx, color);
-            putPixel(x - ty, y + tx, color);
-            putPixel(x - ty, y - tx, color);
+
+        for (; tx <= ty; tx++) {
+            putPixel(x + tx, y + ty, Color.black);
+            putPixel(x + tx, y - ty, Color.red);
+            putPixel(x - tx, y + ty, Color.blue);
+            putPixel(x - tx, y - ty, Color.pink);
+            putPixel(x + ty, y + tx, Color.orange);
+            putPixel(x + ty, y - tx, Color.pink);
+            putPixel(x - ty, y + tx, Color.MAGENTA);
+            putPixel(x - ty, y - tx, Color.cyan);
 
             if (d < 0) {
                 d += 4 * tx + 6;
@@ -48,7 +47,6 @@ public class GUI extends JFrame {
                 d += 4 * (tx - ty) + 10;
                 ty--;
             }
-            tx++;
         }
     }
 

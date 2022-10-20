@@ -1,10 +1,8 @@
-package CircunferenciaPuntoMedio;
+package Figuras;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-
-import static java.lang.Math.round;
 
 public class GUI extends JFrame {
 
@@ -14,7 +12,7 @@ public class GUI extends JFrame {
     int x, y, pk, xc, yc, radius;
 
     public GUI(String[] args) {
-        super("CircunferenciaPuntoMedio");
+        super("Figuras");
         xc = Integer.parseInt(args[0]);
         yc = Integer.parseInt(args[1]);
         radius = Integer.parseInt(args[2]);
@@ -35,22 +33,7 @@ public class GUI extends JFrame {
 
     private void drawCircle() {
 
-        for (; x < y; x++) {
-            if (pk < 0) {
-                pk = pk + 2 * x + 3;
-            } else {
-                y--;
-                pk = pk + 2 * (x - y) + 5;
-            }
-            putPixel(xc + x, yc + y, Color.black);
-            putPixel(xc - x, yc + y, Color.black);
-            putPixel(xc + x, yc - y, Color.black);
-            putPixel(xc - x, yc - y, Color.black);
-            putPixel(xc + y, yc + x, Color.black);
-            putPixel(xc - y, yc + x, Color.black);
-            putPixel(xc + y, yc - x, Color.black);
-            putPixel(xc - y, yc - x, Color.black);
-        }
+
     }
 
     public void putPixel(int x, int y, Color c) {
