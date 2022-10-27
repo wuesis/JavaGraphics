@@ -10,7 +10,7 @@ public class GUI extends JFrame {
 
 
         super("Hola mundo!");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(200, 150);
         setVisible(true);

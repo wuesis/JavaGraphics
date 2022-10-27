@@ -19,7 +19,7 @@ public class GUI extends JFrame {
         x1 = Integer.parseInt(args[2]);
         y1 = Integer.parseInt(args[3]);
         LAnc = Integer.parseInt(args[4]);
-        setSize(500, 500);
+        setSize(1000, 600);
         setVisible(true);
         buffer = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
         graPixel = (Graphics2D) buffer.createGraphics();
