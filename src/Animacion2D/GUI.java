@@ -1,8 +1,12 @@
 package Animacion2D;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.net.URL;
 import java.util.Random;
 
 
@@ -13,11 +17,17 @@ public class GUI extends JFrame implements Runnable {
 
     private BufferedImage boddyCatBuffer, backgroundBuffer, stellaBufferInitial, stellaBufferFinal, headBufferInitial, headBufferSecond, headBufferFinal;
 
-    private BufferedImage feetBuffer_1;
+    private BufferedImage feetBuffer_1, starBuffer_1, starBuffer_2, starBuffer_3, starBuffer_4, starBuffer_5, starBuffer_6;
 
     public Graphics graphics;
 
     public Random random;
+
+    URL audioSrc;
+
+    AudioInputStream inputStream;
+
+    Clip clip;
 
     public boolean filling = false;
     Runnable backGroundRunable = new Runnable() {
@@ -27,6 +37,47 @@ public class GUI extends JFrame implements Runnable {
                 for (int j = 0; j < 999; j++)
                     putPixel(j, i, backgroundBuffer, new Color(0x003366));
             graphics.drawImage(backgroundBuffer, 0, 0, GUI.this);
+//StarModel_1
+            drawRecFill(0, 0, 139, 139, starBuffer_1, new Color(0x003365));
+            drawRecFill(60, 0, 79, 19, starBuffer_1, new Color(0xFFFFFF));
+            drawRecFill(20, 20, 39, 39, starBuffer_1, new Color(0xFFFFFF));
+            drawRecFill(100, 20, 119, 39, starBuffer_1, new Color(0xFFFFFF));
+
+            drawRecFill(0, 60, 19, 79, starBuffer_1, new Color(0xFFFFFF));
+            drawRecFill(120, 60, 139, 79, starBuffer_1, new Color(0xFFFFFF));
+
+            drawRecFill(20, 100, 39, 119, starBuffer_1, new Color(0xFFFFFF));
+            drawRecFill(100, 100, 119, 119, starBuffer_1, new Color(0xFFFFFF));
+            drawRecFill(60, 120, 79, 139, starBuffer_1, new Color(0xFFFFFF));
+//StarModel_2
+            drawRecFill(0, 0, 139, 139, starBuffer_2, new Color(0x003365));
+            drawRecFill(60, 0, 79, 39, starBuffer_2, new Color(0xFFFFFF));
+            drawRecFill(60, 60, 79, 79, starBuffer_2, new Color(0xFFFFFF));
+            drawRecFill(0, 60, 39, 79, starBuffer_2, new Color(0xFFFFFF));
+            drawRecFill(99, 60, 139, 79, starBuffer_2, new Color(0xFFFFFF));
+            drawRecFill(60, 100, 79, 139, starBuffer_2, new Color(0xFFFFFF));
+//StarModel_3
+            drawRecFill(0, 0, 139, 139, starBuffer_3, new Color(0x003365));
+            drawRecFill(0, 60, 19, 79, starBuffer_3, new Color(0xFFFFFF));
+            drawRecFill(60, 0, 79, 19, starBuffer_3, new Color(0xFFFFFF));
+            drawRecFill(120, 60, 139, 79, starBuffer_3, new Color(0xFFFFFF));
+            drawRecFill(60, 120, 79, 139, starBuffer_3, new Color(0xFFFFFF));
+//StarModel_4
+            drawRecFill(0, 0, 69, 69, starBuffer_4, new Color(0x003365));
+            drawRecFill(19, 40, 39, 49, starBuffer_4, new Color(0xFFFFFF));
+            drawRecFill(40, 19, 49, 39, starBuffer_4, new Color(0xFFFFFF));
+            drawRecFill(50, 40, 69, 49, starBuffer_4, new Color(0xFFFFFF));
+            drawRecFill(40, 50, 49, 69, starBuffer_4, new Color(0xFFFFFF));
+//StarModel_5
+            drawRecFill(0, 0, 29, 29, starBuffer_5, new Color(0xFFFFFF));
+
+//StarModel_6
+            drawRecFill(0, 0, 44, 44, starBuffer_6, new Color(0x003565));
+            drawRecFill(0, 15, 14, 29, starBuffer_6, new Color(0xFFFFFF));
+            drawRecFill(15, 0, 29, 14, starBuffer_6, new Color(0xFFFFFF));
+            drawRecFill(30, 15, 44, 29, starBuffer_6, new Color(0xFFFFFF));
+            drawRecFill(15, 30, 29, 44, starBuffer_6, new Color(0xFFFFFF));
+
         }
     };
     Runnable StellaRunable = new Runnable() {
@@ -85,8 +136,6 @@ public class GUI extends JFrame implements Runnable {
                 drawRecFill(390, 110, 439, 119, stellaBufferInitial, new Color(0x010000));
                 drawRecFill(380, 100, 389, 109, stellaBufferInitial, new Color(0x010000));
                 drawRecFill(440, 120, 474, 129, stellaBufferInitial, new Color(0x010000));
-
-
 
 
                 System.out.println("Estala inicial creada :D!");
@@ -412,7 +461,6 @@ public class GUI extends JFrame implements Runnable {
     };
 
 
-
     public GUI() {
         super("Animacion2D");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -429,6 +477,12 @@ public class GUI extends JFrame implements Runnable {
         headBufferSecond = new BufferedImage(160, 130, BufferedImage.TYPE_INT_RGB);
         headBufferFinal = new BufferedImage(160, 130, BufferedImage.TYPE_INT_RGB);
         feetBuffer_1 = new BufferedImage(440, 40, BufferedImage.TYPE_INT_RGB);
+        starBuffer_1 = new BufferedImage(140, 140, BufferedImage.TYPE_INT_RGB);
+        starBuffer_2 = new BufferedImage(140, 140, BufferedImage.TYPE_INT_RGB);
+        starBuffer_3 = new BufferedImage(140, 140, BufferedImage.TYPE_INT_RGB);
+        starBuffer_4 = new BufferedImage(70, 70, BufferedImage.TYPE_INT_RGB);
+        starBuffer_5 = new BufferedImage(30, 30, BufferedImage.TYPE_INT_RGB);
+        starBuffer_6 = new BufferedImage(45, 45, BufferedImage.TYPE_INT_RGB);
         new Thread(this::run, "Background").start();
     }
 
@@ -452,6 +506,7 @@ public class GUI extends JFrame implements Runnable {
                 System.out.println("Error " + error);
             }
         }
+        filling = true;
         floodFill(x0 + 1, y0 + 1, color, buffer);
         filling = false;
         notifyAll();
@@ -461,13 +516,6 @@ public class GUI extends JFrame implements Runnable {
 
     public void putPixel(int x, int y, BufferedImage buffer, Color color) {
         buffer.setRGB(x, y, color.getRGB());
-    }
-
-    public void drawRec(int x0, int y0, int x1, int y1, BufferedImage buffer, Color color) {
-        Línea_DDA(x0, y0, x1, y0, buffer, color);
-        Línea_DDA(x0, y1, x1, y1, buffer, color);
-        Línea_DDA(x1, y0, x1, y1, buffer, color);
-        Línea_DDA(x0, y0, x0, y1, buffer, color);
     }
 
     public void drawRecFill(int x0, int y0, int x1, int y1, BufferedImage buffer, Color color) {
@@ -527,7 +575,17 @@ public class GUI extends JFrame implements Runnable {
     @Override
     public void run() {
         boolean stella = true;
-        short head = 0;
+        short head = 0, step = 0;
+
+        try {
+            audioSrc = getClass().getResource("Audios/nyan-cat.wav");
+            inputStream = AudioSystem.getAudioInputStream(audioSrc);
+            clip = AudioSystem.getClip();
+            clip.open(inputStream);
+            clip.start();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
 
         Thread threadBackground = new Thread(backGroundRunable, "Fondo");
         threadBackground.start();
@@ -541,10 +599,47 @@ public class GUI extends JFrame implements Runnable {
         feets.start();
 
 
-
         while (true) {
+
+
+
+
             try {
                 graphics.drawImage(backgroundBuffer, 0, 0, this);
+
+                switch (step) {
+                    case 0:
+                        graphics.drawImage(starBuffer_1, 900, 80, this);
+                        graphics.drawImage(starBuffer_4, 900, 470, this);
+                        step++;
+                        break;
+                    case 1:
+                        graphics.drawImage(starBuffer_3, 720, 80, GUI.this);
+                        graphics.drawImage(starBuffer_2, 950, 550, this);
+                        step++;
+                        break;
+                    case 2:
+                        graphics.drawImage(starBuffer_6, 520, 40, this);
+                        graphics.drawImage(starBuffer_1, 660, 400, GUI.this);
+                        step++;
+                        break;
+                    case 3:
+                        graphics.drawImage(starBuffer_5, 350, 100, this);
+                        graphics.drawImage(starBuffer_3, 460, 400, GUI.this);
+                        step++;
+                        break;
+                    case 4:
+                        graphics.drawImage(starBuffer_4, 180, 60, this);
+                        graphics.drawImage(starBuffer_6,  210, 400, GUI.this);
+                        step++;
+                        break;
+                    case 5:
+                        graphics.drawImage(starBuffer_2, 0, 240, this);
+                        graphics.drawImage(starBuffer_5, 20, 400, GUI.this);
+                        step = 0;
+                        break;
+                }
+
 
                 if (stella) {
                     graphics.drawImage(stellaBufferInitial, 7, 200, this);
@@ -573,7 +668,7 @@ public class GUI extends JFrame implements Runnable {
                 }
 
 
-                Thread.sleep(200);
+                Thread.sleep(250);
             } catch (InterruptedException e) {
                 System.out.println(e);
             }
