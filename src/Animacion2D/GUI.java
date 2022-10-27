@@ -33,51 +33,56 @@ public class GUI extends JFrame implements Runnable {
     Runnable backGroundRunable = new Runnable() {
         @Override
         public void run() {
-            for (int i = 0; i <= 599; i++)
-                for (int j = 0; j < 999; j++)
-                    putPixel(j, i, backgroundBuffer, new Color(0x003366));
-            graphics.drawImage(backgroundBuffer, 0, 0, GUI.this);
+            try {
+
+                for (int i = 0; i <= 599; i++)
+                    for (int j = 0; j < 999; j++)
+                        putPixel(j, i, backgroundBuffer, new Color(0x003366));
+                graphics.drawImage(backgroundBuffer, 0, 0, GUI.this);
 //StarModel_1
-            drawRecFill(0, 0, 139, 139, starBuffer_1, new Color(0x003365));
-            drawRecFill(60, 0, 79, 19, starBuffer_1, new Color(0xFFFFFF));
-            drawRecFill(20, 20, 39, 39, starBuffer_1, new Color(0xFFFFFF));
-            drawRecFill(100, 20, 119, 39, starBuffer_1, new Color(0xFFFFFF));
+                drawRecFill(0, 0, 139, 139, starBuffer_1, new Color(0x003365));
+                drawRecFill(60, 0, 79, 19, starBuffer_1, new Color(0xFFFFFF));
+                drawRecFill(20, 20, 39, 39, starBuffer_1, new Color(0xFFFFFF));
+                drawRecFill(100, 20, 119, 39, starBuffer_1, new Color(0xFFFFFF));
 
-            drawRecFill(0, 60, 19, 79, starBuffer_1, new Color(0xFFFFFF));
-            drawRecFill(120, 60, 139, 79, starBuffer_1, new Color(0xFFFFFF));
+                drawRecFill(0, 60, 19, 79, starBuffer_1, new Color(0xFFFFFF));
+                drawRecFill(120, 60, 139, 79, starBuffer_1, new Color(0xFFFFFF));
 
-            drawRecFill(20, 100, 39, 119, starBuffer_1, new Color(0xFFFFFF));
-            drawRecFill(100, 100, 119, 119, starBuffer_1, new Color(0xFFFFFF));
-            drawRecFill(60, 120, 79, 139, starBuffer_1, new Color(0xFFFFFF));
+                drawRecFill(20, 100, 39, 119, starBuffer_1, new Color(0xFFFFFF));
+                drawRecFill(100, 100, 119, 119, starBuffer_1, new Color(0xFFFFFF));
+                drawRecFill(60, 120, 79, 139, starBuffer_1, new Color(0xFFFFFF));
 //StarModel_2
-            drawRecFill(0, 0, 139, 139, starBuffer_2, new Color(0x003365));
-            drawRecFill(60, 0, 79, 39, starBuffer_2, new Color(0xFFFFFF));
-            drawRecFill(60, 60, 79, 79, starBuffer_2, new Color(0xFFFFFF));
-            drawRecFill(0, 60, 39, 79, starBuffer_2, new Color(0xFFFFFF));
-            drawRecFill(99, 60, 139, 79, starBuffer_2, new Color(0xFFFFFF));
-            drawRecFill(60, 100, 79, 139, starBuffer_2, new Color(0xFFFFFF));
+                drawRecFill(0, 0, 139, 139, starBuffer_2, new Color(0x003365));
+                drawRecFill(60, 0, 79, 39, starBuffer_2, new Color(0xFFFFFF));
+                drawRecFill(60, 60, 79, 79, starBuffer_2, new Color(0xFFFFFF));
+                drawRecFill(0, 60, 39, 79, starBuffer_2, new Color(0xFFFFFF));
+                drawRecFill(99, 60, 139, 79, starBuffer_2, new Color(0xFFFFFF));
+                drawRecFill(60, 100, 79, 139, starBuffer_2, new Color(0xFFFFFF));
 //StarModel_3
-            drawRecFill(0, 0, 139, 139, starBuffer_3, new Color(0x003365));
-            drawRecFill(0, 60, 19, 79, starBuffer_3, new Color(0xFFFFFF));
-            drawRecFill(60, 0, 79, 19, starBuffer_3, new Color(0xFFFFFF));
-            drawRecFill(120, 60, 139, 79, starBuffer_3, new Color(0xFFFFFF));
-            drawRecFill(60, 120, 79, 139, starBuffer_3, new Color(0xFFFFFF));
+                drawRecFill(0, 0, 139, 139, starBuffer_3, new Color(0x003365));
+                drawRecFill(0, 60, 19, 79, starBuffer_3, new Color(0xFFFFFF));
+                drawRecFill(60, 0, 79, 19, starBuffer_3, new Color(0xFFFFFF));
+                drawRecFill(120, 60, 139, 79, starBuffer_3, new Color(0xFFFFFF));
+                drawRecFill(60, 120, 79, 139, starBuffer_3, new Color(0xFFFFFF));
 //StarModel_4
-            drawRecFill(0, 0, 69, 69, starBuffer_4, new Color(0x003365));
-            drawRecFill(19, 40, 39, 49, starBuffer_4, new Color(0xFFFFFF));
-            drawRecFill(40, 19, 49, 39, starBuffer_4, new Color(0xFFFFFF));
-            drawRecFill(50, 40, 69, 49, starBuffer_4, new Color(0xFFFFFF));
-            drawRecFill(40, 50, 49, 69, starBuffer_4, new Color(0xFFFFFF));
+                drawRecFill(0, 0, 69, 69, starBuffer_4, new Color(0x003365));
+                drawRecFill(19, 40, 39, 49, starBuffer_4, new Color(0xFFFFFF));
+                drawRecFill(40, 19, 49, 39, starBuffer_4, new Color(0xFFFFFF));
+                drawRecFill(50, 40, 69, 49, starBuffer_4, new Color(0xFFFFFF));
+                drawRecFill(40, 50, 49, 69, starBuffer_4, new Color(0xFFFFFF));
 //StarModel_5
-            drawRecFill(0, 0, 29, 29, starBuffer_5, new Color(0xFFFFFF));
+                drawRecFill(0, 0, 29, 29, starBuffer_5, new Color(0xFFFFFF));
 
 //StarModel_6
-            drawRecFill(0, 0, 44, 44, starBuffer_6, new Color(0x003565));
-            drawRecFill(0, 15, 14, 29, starBuffer_6, new Color(0xFFFFFF));
-            drawRecFill(15, 0, 29, 14, starBuffer_6, new Color(0xFFFFFF));
-            drawRecFill(30, 15, 44, 29, starBuffer_6, new Color(0xFFFFFF));
-            drawRecFill(15, 30, 29, 44, starBuffer_6, new Color(0xFFFFFF));
+                drawRecFill(0, 0, 44, 44, starBuffer_6, new Color(0x003565));
+                drawRecFill(0, 15, 14, 29, starBuffer_6, new Color(0xFFFFFF));
+                drawRecFill(15, 0, 29, 14, starBuffer_6, new Color(0xFFFFFF));
+                drawRecFill(30, 15, 44, 29, starBuffer_6, new Color(0xFFFFFF));
+                drawRecFill(15, 30, 29, 44, starBuffer_6, new Color(0xFFFFFF));
 
+            } catch (Exception e) {
+                System.out.println(e);
+            }
         }
     };
     Runnable StellaRunable = new Runnable() {
@@ -488,10 +493,12 @@ public class GUI extends JFrame implements Runnable {
 
     @Override
     public void paint(Graphics g) {
+        this.getGraphics().drawImage(feetBuffer_1, 450, 400, this);
         this.getGraphics().drawImage(backgroundBuffer, 0, 0, this);
         this.getGraphics().drawImage(stellaBufferFinal, 7, 200, this);
         this.getGraphics().drawImage(stellaBufferInitial, 7, 200, this);
         this.getGraphics().drawImage(boddyCatBuffer, 475, 200, this);
+
 
     }
 
@@ -602,8 +609,6 @@ public class GUI extends JFrame implements Runnable {
         while (true) {
 
 
-
-
             try {
                 graphics.drawImage(backgroundBuffer, 0, 0, this);
 
@@ -630,7 +635,8 @@ public class GUI extends JFrame implements Runnable {
                         break;
                     case 4:
                         graphics.drawImage(starBuffer_4, 180, 60, this);
-                        graphics.drawImage(starBuffer_6,  210, 400, GUI.this);
+                        graphics.drawImage(starBuffer_1, 850, 280, this);
+                        graphics.drawImage(starBuffer_6, 210, 400, GUI.this);
                         step++;
                         break;
                     case 5:
