@@ -15,7 +15,7 @@ public class GUI extends JFrame {
         xc = Integer.parseInt(args[0]);
         yc = Integer.parseInt(args[1]);
         radius = Integer.parseInt(args[2]);
-        grosor = Integer.parseInt(args[2]);
+        grosor = Integer.parseInt(args[3]);
         setSize(800, 600);
         setVisible(true);
         buffer = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);

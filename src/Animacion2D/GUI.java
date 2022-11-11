@@ -23,6 +23,9 @@ public class GUI extends JFrame implements Runnable {
 
     public Random random;
 
+    boolean stella = true;
+    short head = 0, step = 0;
+
     URL audioSrc;
 
     AudioInputStream inputStream;
@@ -493,12 +496,69 @@ public class GUI extends JFrame implements Runnable {
 
     @Override
     public void paint(Graphics g) {
-        this.getGraphics().drawImage(feetBuffer_1, 450, 400, this);
-        this.getGraphics().drawImage(backgroundBuffer, 0, 0, this);
-        this.getGraphics().drawImage(stellaBufferFinal, 7, 200, this);
-        this.getGraphics().drawImage(stellaBufferInitial, 7, 200, this);
-        this.getGraphics().drawImage(boddyCatBuffer, 475, 200, this);
 
+        graphics.drawImage(backgroundBuffer, 0, 0, this);
+
+        switch (step) {
+            case 0:
+                graphics.drawImage(starBuffer_1, 900, 80, this);
+                graphics.drawImage(starBuffer_4, 900, 470, this);
+                step++;
+                break;
+            case 1:
+                graphics.drawImage(starBuffer_3, 720, 80, GUI.this);
+                graphics.drawImage(starBuffer_2, 950, 550, this);
+                step++;
+                break;
+            case 2:
+                graphics.drawImage(starBuffer_6, 520, 40, this);
+                graphics.drawImage(starBuffer_1, 660, 400, GUI.this);
+                step++;
+                break;
+            case 3:
+                graphics.drawImage(starBuffer_5, 350, 100, this);
+                graphics.drawImage(starBuffer_3, 460, 400, GUI.this);
+                step++;
+                break;
+            case 4:
+                graphics.drawImage(starBuffer_4, 180, 60, this);
+                graphics.drawImage(starBuffer_1, 850, 280, this);
+                graphics.drawImage(starBuffer_6, 210, 400, GUI.this);
+                step++;
+                break;
+            case 5:
+                graphics.drawImage(starBuffer_2, 0, 240, this);
+                graphics.drawImage(starBuffer_5, 20, 400, GUI.this);
+                step = 0;
+                break;
+        }
+
+
+        if (stella) {
+            graphics.drawImage(stellaBufferInitial, 7, 200, this);
+            stella = false;
+        } else {
+            graphics.drawImage(stellaBufferFinal, 7, 200, this);
+            stella = true;
+        }
+
+
+        graphics.drawImage(feetBuffer_1, 450, 400, this);
+        graphics.drawImage(boddyCatBuffer, 475, 200, this);
+        switch (head) {
+            case 0:
+                graphics.drawImage(headBufferInitial, 775, 290, GUI.this);
+                head++;
+                break;
+            case 1:
+                graphics.drawImage(headBufferSecond, 725, 290, GUI.this);
+                head++;
+                break;
+            case 2:
+                graphics.drawImage(headBufferFinal, 725, 240, this);
+                head = 0;
+                break;
+        }
 
     }
 
@@ -581,8 +641,7 @@ public class GUI extends JFrame implements Runnable {
 
     @Override
     public void run() {
-        boolean stella = true;
-        short head = 0, step = 0;
+
 
         try {
             audioSrc = getClass().getResource("Audios/nyan-cat.wav");
@@ -610,72 +669,9 @@ public class GUI extends JFrame implements Runnable {
 
 
             try {
-                graphics.drawImage(backgroundBuffer, 0, 0, this);
-
-                switch (step) {
-                    case 0:
-                        graphics.drawImage(starBuffer_1, 900, 80, this);
-                        graphics.drawImage(starBuffer_4, 900, 470, this);
-                        step++;
-                        break;
-                    case 1:
-                        graphics.drawImage(starBuffer_3, 720, 80, GUI.this);
-                        graphics.drawImage(starBuffer_2, 950, 550, this);
-                        step++;
-                        break;
-                    case 2:
-                        graphics.drawImage(starBuffer_6, 520, 40, this);
-                        graphics.drawImage(starBuffer_1, 660, 400, GUI.this);
-                        step++;
-                        break;
-                    case 3:
-                        graphics.drawImage(starBuffer_5, 350, 100, this);
-                        graphics.drawImage(starBuffer_3, 460, 400, GUI.this);
-                        step++;
-                        break;
-                    case 4:
-                        graphics.drawImage(starBuffer_4, 180, 60, this);
-                        graphics.drawImage(starBuffer_1, 850, 280, this);
-                        graphics.drawImage(starBuffer_6, 210, 400, GUI.this);
-                        step++;
-                        break;
-                    case 5:
-                        graphics.drawImage(starBuffer_2, 0, 240, this);
-                        graphics.drawImage(starBuffer_5, 20, 400, GUI.this);
-                        step = 0;
-                        break;
-                }
-
-
-                if (stella) {
-                    graphics.drawImage(stellaBufferInitial, 7, 200, this);
-                    stella = false;
-                } else {
-                    graphics.drawImage(stellaBufferFinal, 7, 200, this);
-                    stella = true;
-                }
-
-
-                graphics.drawImage(feetBuffer_1, 450, 400, this);
-                graphics.drawImage(boddyCatBuffer, 475, 200, this);
-                switch (head) {
-                    case 0:
-                        graphics.drawImage(headBufferInitial, 775, 290, GUI.this);
-                        head++;
-                        break;
-                    case 1:
-                        graphics.drawImage(headBufferSecond, 725, 290, GUI.this);
-                        head++;
-                        break;
-                    case 2:
-                        graphics.drawImage(headBufferFinal, 725, 240, this);
-                        head = 0;
-                        break;
-                }
-
-
                 Thread.sleep(250);
-            } catch (InterruptedException e) {
+                repaint();
+            } catch (Exception e) {
                 System.out.println(e);
             }
 

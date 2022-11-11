@@ -20,9 +20,7 @@ public class GUI extends JFrame implements Runnable {
     private Image buffer;
     Random random;
     URL audioSrc;
-
     AudioInputStream inputStream;
-
     Clip clip;
 
     public GUI() {
@@ -35,7 +33,7 @@ public class GUI extends JFrame implements Runnable {
         new Thread(this::run, "Reloj").start();
     }
 
-    public void paint(Graphics g) {
+    public synchronized void paint(Graphics g) {
 
         Graphics2D g2 = (Graphics2D) g;
         var fondo = new ImageIcon(getClass().getResource("Imagenes/FondoReloj.png")).getImage();
